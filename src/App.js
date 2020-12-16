@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from "react";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
+import CreateAccount from "./pages/CreateAccount";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Plans from "./pages/Plans";
+import Investments from "./pages/Investments";
+import Portfolio from "./pages/Portfolio";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/create" component={CreateAccount} />
+          <Route exact path="/dashboard/plans" component={Plans} />
+          <Route exact path="/dashboard/investments" component={Investments} />
+          <Route exact path="/dashboard/portfolio" component={Portfolio} />
+          <Route exact path="/dashboard/portfolio" component={Portfolio} />
+        </Switch>
+      </BrowserRouter>
+    </Fragment>
   );
-}
-
+};
 export default App;
