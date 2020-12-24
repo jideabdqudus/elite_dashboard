@@ -74,7 +74,7 @@ const InvestmentCard = () => {
       <Fragment>
         <div style={{ marginTop: "10px", padding: "1rem" }}>
           <Row gutter={[24, 24]}>
-            <Col span={8}>
+            <Col span={8} className="cardCol">
               <Card className="treasureCard">
                 <p
                   style={{
@@ -104,7 +104,7 @@ const InvestmentCard = () => {
                 </Link>
               </Card>
             </Col>
-            <Col span={8}>
+            <Col span={8} className="cardCol">
               <Card className="fixedDepositCard">
                 <p
                   style={{
@@ -138,7 +138,7 @@ const InvestmentCard = () => {
         </div>
         <div style={{ marginTop: "10px", padding: "1rem" }}>
           <Row gutter={[24, 24]}>
-            <Col span={8}>
+            <Col span={8} className="cardCol">
               <Card className="equitiesCard">
                 <p
                   style={{
@@ -168,7 +168,7 @@ const InvestmentCard = () => {
                 </Link>
               </Card>
             </Col>
-            <Col span={8}>
+            <Col span={8} className="cardCol">
               <Card className="bondsCard">
                 <p
                   style={{

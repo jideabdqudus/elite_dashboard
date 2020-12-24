@@ -3,6 +3,7 @@ import "./pages.css";
 import { Row, Col } from "antd";
 import Originate from "../assets/OriginateOrignal.png";
 import NewAccount from "../components/NewAccount";
+import EliteLogo from "../assets/Elite_Logo.svg";
 
 const CreateAccount = () => {
   return (
@@ -11,6 +12,13 @@ const CreateAccount = () => {
         <div className="container">
           <Row className="createRow">
             <Col span={12} className="loginHeading">
+              <img
+                src={EliteLogo}
+                alt="Cowrywise"
+                height="100px"
+                width="400px"
+                style={{ marginTop: "20px", marginBottom: "30px" }}
+              />
               {/* <img
                 src={Originate}
                 alt="Cowrywise"

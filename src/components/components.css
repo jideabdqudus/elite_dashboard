@@ -202,10 +202,14 @@
     padding: 5px;
   }
   .cardHero {
-    background: #fff;
+    background: #fff !important;
     border-radius: 7px;
     box-shadow: 0 5px 15px rgba(0, 115, 231, 0.08);
     margin: 0 !important;
     padding: 0 !important;
+  }
+  .cardCol {
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
   }
 }

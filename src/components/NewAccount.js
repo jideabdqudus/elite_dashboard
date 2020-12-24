@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { Form, Input, Button, Row, Col, Card } from "antd";
 import {
   UserOutlined,
@@ -7,6 +7,7 @@ import {
   LikeOutlined,
 } from "@ant-design/icons";
 import "./components.css";
+import { Link } from "react-router-dom";
 
 const NewAccount = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ const NewAccount = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const onFinish = async () => {
-    console.log(formData)
+    console.log(formData);
   };
 
   return (
@@ -128,11 +129,25 @@ const NewAccount = () => {
               </Form.Item>
             </Col>
           </Row>
+          <Col span={16}>
+            {" "}
+            <Form.Item>
+              <Link
+                to="/"
+                style={{
+                  color: "grey",
+                  fontSize: ".9rem",
+                  fontWeight: "bold",
+                }}
+              >
+                Old user, <b style={{ color: "#0066f5" }}>Login</b>
+              </Link>
+            </Form.Item>
+          </Col>
         </Form>
       </Card>
     </div>
   );
 };
 
-
-export default NewAccount
+export default NewAccount;

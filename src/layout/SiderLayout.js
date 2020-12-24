@@ -37,7 +37,6 @@ class SiderLayout extends React.Component {
             position: "fixed",
             zIndex: "999",
           }}
-          collapsible
           collapsed={this.state.collapsed}
           onCollapse={this.onCollapse}
         >
@@ -119,103 +118,6 @@ class SiderLayout extends React.Component {
               }}
             >
               <Link to="/dashboard/portfolio">Portfolio</Link>
-            </Menu.Item>
-            <Menu.Item
-              key="3"
-              icon={
-                <DatabaseOutlined
-                  style={{
-                    fontSize: "20px",
-                    color: "#0a2e65",
-                    marginRight: "40px",
-                  }}
-                />
-              }
-              style={{
-                fontSize: "20px",
-                fontWeight: "bold",
-                marginBottom: "20px",
-              }}
-            >
-              <Link to="/dashboard/history">History</Link>
-            </Menu.Item>
-            <Menu.Item
-              key="4"
-              icon={
-                <WalletOutlined
-                  style={{
-                    fontSize: "20px",
-                    color: "#0a2e65",
-                    marginRight: "40px",
-                  }}
-                />
-              }
-              style={{
-                fontSize: "20px",
-                fontWeight: "bold",
-                marginBottom: "20px",
-              }}
-            >
-              {" "}
-              Stash
-            </Menu.Item>
-            <Menu.Item
-              key="5"
-              icon={
-                <SmileOutlined
-                  style={{
-                    fontSize: "20px",
-                    color: "#0a2e65",
-                    marginRight: "40px",
-                  }}
-                />
-              }
-              style={{
-                fontSize: "20px",
-                fontWeight: "bold",
-                marginBottom: "20px",
-              }}
-            >
-              Referral
-            </Menu.Item>
-            <Menu.Item
-              key="6"
-              icon={
-                <CreditCardOutlined
-                  style={{
-                    fontSize: "20px",
-                    color: "#0a2e65",
-                    marginRight: "40px",
-                  }}
-                />
-              }
-              style={{
-                fontSize: "20px",
-                fontWeight: "bold",
-                marginBottom: "20px",
-              }}
-            >
-              Payment
-            </Menu.Item>
-            <Menu.Item
-              key="7"
-              icon={
-                <TeamOutlined
-                  style={{
-                    fontSize: "20px",
-                    color: "#0a2e65",
-                    marginRight: "40px",
-                  }}
-                />
-              }
-              style={{
-                fontSize: "20px",
-                fontWeight: "bold",
-                marginBottom: "20px",
-              }}
-            >
-              {" "}
-              Chat
             </Menu.Item>
           </Menu>
         </Sider>
