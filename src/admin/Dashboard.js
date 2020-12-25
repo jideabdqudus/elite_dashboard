@@ -1,14 +1,14 @@
 import React from "react";
-import SiderLayout from "../layout/SiderLayout";
-import NavbarTop from "../layout/NavbarTop";
+import SiderLayout from "../adminLayout/SiderLayout";
+import NavbarTop from "../adminLayout/NavbarTop";
 
-const Dashboard = () => {
+const AdminDash = () => {
   return (
     <div>
-      <NavbarTop style={{position:"fixed"}}/>
+      <NavbarTop style={{ position: "fixed" }} />
       <SiderLayout />
     </div>
   );
 };
 
-export default Dashboard;
+export default AdminDash;

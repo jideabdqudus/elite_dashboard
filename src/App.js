@@ -7,7 +7,7 @@ import Plans from "./pages/Plans";
 import Investments from "./pages/Investments";
 import Portfolio from "./pages/Portfolio";
 import History from "./pages/History"
-
+import AdminDash from "./admin/Dashboard"
 const App = () => {
   return (
     <Fragment>
@@ -21,6 +21,7 @@ const App = () => {
           <Route exact path="/dashboard/portfolio" component={Portfolio} />
           <Route exact path="/dashboard/portfolio" component={Portfolio} />
           <Route exact path="/dashboard/history" component={History} />
+          <Route exact path="/admin/dashboard" component={AdminDash} />
         </Switch>
       </BrowserRouter>
     </Fragment>
