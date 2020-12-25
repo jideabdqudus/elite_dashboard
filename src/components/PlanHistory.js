@@ -43,22 +43,7 @@ const PlanHistory = () => {
                 {"₦ 0.00"}
               </p>
               <p style={{ color: "gray", fontWeight: "normal" }}>
-                {"Total Invested"}
-              </p>
-            </Col>
-            <Col span={8} className="cardCol">
-              <p
-                style={{
-                  color: "#0a2e65",
-                  fontWeight: "700",
-                  fontSize: "20px",
-                  margin: "0px",
-                }}
-              >
-                {"₦ 0.00"}
-              </p>
-              <p style={{ color: "gray", fontWeight: "normal" }}>
-                {"Current Value"}
+                {"Amount Invested"}
               </p>
             </Col>
             <Col span={4} className="cardCol">
@@ -70,10 +55,40 @@ const PlanHistory = () => {
                   margin: "0px",
                 }}
               >
-                {"₦ 0.00"}
+                {"0.00%"}
               </p>
               <p style={{ color: "gray", fontWeight: "normal" }}>
-                {"Total Gain/Loss"}
+                {"Interest"}
+              </p>
+            </Col>
+            <Col span={4} className="cardCol">
+              <p
+                style={{
+                  color: "#0a2e65",
+                  fontWeight: "700",
+                  fontSize: "20px",
+                  margin: "0px",
+                }}
+              >
+                {"-"}
+              </p>
+              <p style={{ color: "gray", fontWeight: "normal" }}>
+                {"Tenure"}
+              </p>
+            </Col>
+            <Col span={4} className="cardCol">
+              <p
+                style={{
+                  color: "#0a2e65",
+                  fontWeight: "700",
+                  fontSize: "20px",
+                  margin: "0px",
+                }}
+              >
+                {"-"}
+              </p>
+              <p style={{ color: "gray", fontWeight: "normal" }}>
+                {"Expected Value"}
               </p>
             </Col>
             <hr />

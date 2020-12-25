@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Plans from "./pages/Plans";
 import Investments from "./pages/Investments";
 import Portfolio from "./pages/Portfolio";
+import History from "./pages/History"
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route exact path="/dashboard/investments" component={Investments} />
           <Route exact path="/dashboard/portfolio" component={Portfolio} />
           <Route exact path="/dashboard/portfolio" component={Portfolio} />
+          <Route exact path="/dashboard/history" component={History} />
         </Switch>
       </BrowserRouter>
     </Fragment>

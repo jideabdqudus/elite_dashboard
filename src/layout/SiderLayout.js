@@ -119,6 +119,25 @@ class SiderLayout extends React.Component {
             >
               <Link to="/dashboard/portfolio">Portfolio</Link>
             </Menu.Item>
+            <Menu.Item
+              key="7"
+              icon={
+                <DatabaseOutlined
+                  style={{
+                    fontSize: "20px",
+                    color: "#0a2e65",
+                    marginRight: "40px",
+                  }}
+                />
+              }
+              style={{
+                fontSize: "20px",
+                fontWeight: "bold",
+                marginBottom: "20px",
+              }}
+            >
+              <Link to="/dashboard/history">History</Link>
+            </Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout" style={{ backgroundColor: "#f4f7fa" }}>

@@ -78,7 +78,7 @@ class SiderLayout5 extends React.Component {
             </Menu.Item>{" "}
             <Menu.Item
               to="/dashboard/investments"
-              key="1"
+              key="9"
               icon={
                 <BookOutlined
                   style={{
@@ -117,6 +117,25 @@ class SiderLayout5 extends React.Component {
               }}
             >
               <Link to="/dashboard/portfolio">Portfolio</Link>
+            </Menu.Item>
+            <Menu.Item
+              key="7"
+              icon={
+                <DatabaseOutlined
+                  style={{
+                    fontSize: "20px",
+                    color: "#0a2e65",
+                    marginRight: "40px",
+                  }}
+                />
+              }
+              style={{
+                fontSize: "20px",
+                fontWeight: "bold",
+                marginBottom: "20px",
+              }}
+            >
+              <Link to="/dashboard/history">History</Link>
             </Menu.Item>
           </Menu>
         </Sider>

@@ -171,7 +171,7 @@ const DashCard = () => {
               fontWeight: "700",
             }}
           >
-            Featured Products
+            My Investment
           </p>
         </div>
         <Row gutter={[24, 24]}>

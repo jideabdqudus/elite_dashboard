@@ -5,6 +5,7 @@ import {
   BookOutlined,
   CreditCardOutlined,
   SmileOutlined,
+  ContainerOutlined,
   TeamOutlined,
   WalletOutlined,
   BankOutlined,
@@ -14,6 +15,7 @@ import "../components/components.css";
 import { Link } from "react-router-dom";
 import Logo from "../assets/OriginateLogoOriginal.png";
 import PlanHistory from "../components/PlanHistory";
+import InvestmentHistory from "../components/InvestmentHistory";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -101,6 +103,47 @@ class SiderLayout3 extends React.Component {
               {" "}
               <Link to="/dashboard/investments">Investments</Link>
             </Menu.Item>
+
+            <Menu.Item
+              key="6"
+              icon={
+                <ContainerOutlined
+                  style={{
+                    fontSize: "20px",
+                    color: "#0a2e65",
+                    marginRight: "40px",
+                  }}
+                />
+              }
+              style={{
+                fontSize: "20px",
+                fontWeight: "bold",
+                marginBottom: "20px",
+              }}
+            >
+              <Link to="/dashboard/portfolio">Portfolio</Link>
+            </Menu.Item>
+            <Menu.Item
+              to="/dashboard/portfolio"
+              defaultSelectedKeys={["1"]}
+              key="1"
+              icon={
+                <DatabaseOutlined
+                  style={{
+                    fontSize: "20px",
+                    color: "#0a2e65",
+                    marginRight: "40px",
+                  }}
+                />
+              }
+              style={{
+                fontSize: "20px",
+                fontWeight: "bold",
+                marginBottom: "20px",
+              }}
+            >
+              <Link to="/dashboard/history">History</Link>
+            </Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout" style={{ backgroundColor: "#f4f7fa" }}>
@@ -116,13 +159,13 @@ class SiderLayout3 extends React.Component {
                 fontWeight: "bolder",
               }}
             >
-              ACCOUNT OVERVIEW
+              History
             </h1>
             <div
               className="site-layout-background"
               style={{ marginLeft: "80px" }}
             >
-              <PlanHistory />
+              <InvestmentHistory />
             </div>
           </Content>
           <Footer style={{ textAlign: "center" }}>
