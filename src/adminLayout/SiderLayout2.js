@@ -13,7 +13,7 @@ import {
 import "../adminComponents/components.css";
 
 import { Link } from "react-router-dom";
-import DashCard from "../adminComponents/DashCard";
+import ProductsCard from "../adminComponents/ProductsCard";
 import Logo from "../assets/OriginateLogoOriginal.png";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -61,8 +61,7 @@ class SiderLayout extends React.Component {
               /> */}
             </Link>
             <Menu.Item
-              to="/"
-              key="1"
+              key="6"
               icon={
                 <BankOutlined
                   style={{
@@ -81,7 +80,8 @@ class SiderLayout extends React.Component {
               <Link to="/admin/dashboard">Home</Link>
             </Menu.Item>{" "}
             <Menu.Item
-              key="2"
+              to="/admin/products"
+              key="1"
               icon={
                 <BookOutlined
                   style={{
@@ -101,6 +101,7 @@ class SiderLayout extends React.Component {
               <Link to="/admin/products">Products</Link>
             </Menu.Item>
             <Menu.Item
+              to="/admin/investors"
               key="6"
               icon={
                 <ContainerOutlined
@@ -120,7 +121,7 @@ class SiderLayout extends React.Component {
               <Link to="/admin/investors">Investors</Link>
             </Menu.Item>
             <Menu.Item
-            to="/admin/history"
+              to="admin/history"
               key="7"
               icon={
                 <DatabaseOutlined
@@ -154,13 +155,13 @@ class SiderLayout extends React.Component {
                 fontWeight: "bolder",
               }}
             >
-              OVERVIEW
+              PRODUCT CREATION
             </h1>
             <div
               className="site-layout-background"
               style={{ marginLeft: "80px" }}
             >
-              <DashCard />
+              <ProductsCard />
             </div>
           </Content>
           <Footer style={{ textAlign: "center" }}>

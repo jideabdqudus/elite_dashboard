@@ -6,8 +6,11 @@ import Login from "./pages/Login";
 import Plans from "./pages/Plans";
 import Investments from "./pages/Investments";
 import Portfolio from "./pages/Portfolio";
-import History from "./pages/History"
-import AdminDash from "./admin/Dashboard"
+import History from "./pages/History";
+import AdminDash from "./admin/Dashboard";
+import Products from "./admin/Products";
+import Investors from "./admin/Investors";
+import AdminHistory from "./admin/History";
 const App = () => {
   return (
     <Fragment>
@@ -22,6 +25,9 @@ const App = () => {
           <Route exact path="/dashboard/portfolio" component={Portfolio} />
           <Route exact path="/dashboard/history" component={History} />
           <Route exact path="/admin/dashboard" component={AdminDash} />
+          <Route exact path="/admin/products" component={Products} />
+          <Route exact path="/admin/investors" component={Investors} />
+          <Route exact path="/admin/history" component={AdminHistory} />
         </Switch>
       </BrowserRouter>
     </Fragment>

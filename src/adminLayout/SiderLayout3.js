@@ -13,7 +13,7 @@ import {
 import "../adminComponents/components.css";
 
 import { Link } from "react-router-dom";
-import DashCard from "../adminComponents/DashCard";
+import InvestorsCard from "../adminComponents/InvestorsCard";
 import Logo from "../assets/OriginateLogoOriginal.png";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -61,8 +61,8 @@ class SiderLayout extends React.Component {
               /> */}
             </Link>
             <Menu.Item
-              to="/"
-              key="1"
+              to="/admin/dashboard"
+              key="6"
               icon={
                 <BankOutlined
                   style={{
@@ -101,7 +101,8 @@ class SiderLayout extends React.Component {
               <Link to="/admin/products">Products</Link>
             </Menu.Item>
             <Menu.Item
-              key="6"
+              to="/admin/investors"
+              key="1"
               icon={
                 <ContainerOutlined
                   style={{
@@ -120,7 +121,7 @@ class SiderLayout extends React.Component {
               <Link to="/admin/investors">Investors</Link>
             </Menu.Item>
             <Menu.Item
-            to="/admin/history"
+              to="/admin/history"
               key="7"
               icon={
                 <DatabaseOutlined
@@ -154,13 +155,13 @@ class SiderLayout extends React.Component {
                 fontWeight: "bolder",
               }}
             >
-              OVERVIEW
+              INVESTORS
             </h1>
             <div
               className="site-layout-background"
               style={{ marginLeft: "80px" }}
             >
-              <DashCard />
+              <InvestorsCard />
             </div>
           </Content>
           <Footer style={{ textAlign: "center" }}>

@@ -13,7 +13,7 @@ import {
 import "../adminComponents/components.css";
 
 import { Link } from "react-router-dom";
-import DashCard from "../adminComponents/DashCard";
+import HistoryCard from "../adminComponents/HistoryCard";
 import Logo from "../assets/OriginateLogoOriginal.png";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -62,7 +62,7 @@ class SiderLayout extends React.Component {
             </Link>
             <Menu.Item
               to="/"
-              key="1"
+              key="7"
               icon={
                 <BankOutlined
                   style={{
@@ -120,8 +120,8 @@ class SiderLayout extends React.Component {
               <Link to="/admin/investors">Investors</Link>
             </Menu.Item>
             <Menu.Item
-            to="/admin/history"
-              key="7"
+              to="/admin/history"
+              key="1"
               icon={
                 <DatabaseOutlined
                   style={{
@@ -154,13 +154,13 @@ class SiderLayout extends React.Component {
                 fontWeight: "bolder",
               }}
             >
-              OVERVIEW
+              HISTORY
             </h1>
             <div
               className="site-layout-background"
               style={{ marginLeft: "80px" }}
             >
-              <DashCard />
+              <HistoryCard />
             </div>
           </Content>
           <Footer style={{ textAlign: "center" }}>
