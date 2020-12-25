@@ -20,8 +20,12 @@ import Drop from "../assets/plan.bffb472.svg";
 import Box from "../assets/giftbox-white.90fb8b4.svg";
 import Fire from "../assets/fire.svg";
 import { Link } from "react-router-dom";
+import { useSelector} from "react-redux";
+
 
 const DashCard = () => {
+  const  {error,userData ,success}= useSelector(state => state?.auth)
+
   const [form] = Form.useForm();
   const [checkNick, setCheckNick] = useState(false);
   useEffect(() => {
@@ -98,7 +102,7 @@ const DashCard = () => {
                 lineHeight: "1.1em",
               }}
             >
-              Abdul-Qudus Olajide
+              {userData.firstName}-{userData.lastName}
             </h1>
           </div>
           <Row gutter={[24, 24]}>

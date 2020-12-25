@@ -1,10 +1,22 @@
-import React, { Fragment } from "react";
+import React, { Fragment ,useState,useEffect } from "react";
+
 import "./pages.css";
 import { Row, Col } from "antd";
-import Originate from "../assets/OriginateOrignal.png";
+// import Originate from "../assets/OriginateOrignal.png";
 import NewAccount from "../components/NewAccount";
+import { useDispatch,useSelector} from "react-redux";
 
 const CreateAccount = () => {
+  const  {success} = useSelector(state => state.auth)
+  const  [Otp,setOtp] = useState('')
+
+  useEffect(() => {
+    return () => {
+    setOtp(true)
+      setTimeout(()=>{
+      },7000)
+    }
+  }, [success])
   return (
     <Fragment>
       <div>
@@ -38,7 +50,7 @@ const CreateAccount = () => {
                     fontSize: "2.3rem",
                   }}
                 >
-                  Create a new account
+                 {Otp?'input otp':" Create a new account"} 
                 </h1>
               </div>
             </Col>
