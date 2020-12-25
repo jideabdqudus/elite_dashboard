@@ -51,6 +51,7 @@ const NewAccount = () => {
 
 
     }
+    console.log(formData);
   };
   useEffect(() => {
     return () => {
@@ -199,6 +200,21 @@ const NewAccount = () => {
               </Form.Item>
             </Col>
           </Row>
+          <Col span={16}>
+            {" "}
+            <Form.Item>
+              <Link
+                to="/"
+                style={{
+                  color: "grey",
+                  fontSize: ".9rem",
+                  fontWeight: "bold",
+                }}
+              >
+                Old user, <b style={{ color: "#0066f5" }}>Login</b>
+              </Link>
+            </Form.Item>
+          </Col>
         </Form>
       </Card>:
       // otp form
@@ -271,5 +287,4 @@ const NewAccount = () => {
   );
 };
 
-
-export default NewAccount
+export default NewAccount;

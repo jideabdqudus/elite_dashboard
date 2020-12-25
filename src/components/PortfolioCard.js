@@ -24,58 +24,12 @@ const PortfolioCard = () => {
     form.validateFields(["nickname"]);
   }, [checkNick]);
 
-  const onCheckboxChange = (e) => {
-    setCheckNick(e.target.checked);
-  };
-  const onCheck = async () => {
-    try {
-      const values = await form.validateFields();
-      console.log("Success:", values);
-    } catch (errorInfo) {
-      console.log("Failed:", errorInfo);
-    }
-  };
-
-  const formItemLayout = {
-    labelCol: {
-      span: 12,
-    },
-    wrapperCol: {
-      span: 24,
-    },
-  };
-  const formTailLayout = {
-    labelCol: {
-      span: 12,
-    },
-    wrapperCol: {
-      span: 24,
-      offset: 12,
-    },
-  };
-  const [visible, setVisible] = useState(false);
-
-  const showModal = () => {
-    setVisible(true);
-  };
-
-  const handleOk = (e) => {
-    setVisible(true);
-  };
-
-  const onDelete = () => {
-    console.log("Deleted");
-  };
-
-  const handleCancel = (e) => {
-    setVisible(false);
-  };
   return (
     <div>
       <Fragment>
         <div style={{ marginTop: "10px", padding: "1rem" }}>
           <Row gutter={[24, 24]}>
-            <Col span={8}>
+            <Col span={8} className="cardCol">
               <Card className="treasureCard">
                 <p
                   style={{
@@ -103,7 +57,7 @@ const PortfolioCard = () => {
                 </Link>
               </Card>
             </Col>
-            <Col span={8}>
+            <Col span={8} className="cardCol">
               <Card className="fixedDepositCard">
                 <p
                   style={{
@@ -131,7 +85,7 @@ const PortfolioCard = () => {
                 </Link>
               </Card>
             </Col>
-            <Col span={8}>
+            <Col span={8} className="cardCol">
               <Card className="equitiesCard">
                 <p
                   style={{

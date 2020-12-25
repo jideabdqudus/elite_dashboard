@@ -106,8 +106,8 @@ const DashCard = () => {
             </h1>
           </div>
           <Row gutter={[24, 24]}>
-            <Col span={8}>
-              <Card className="cardHero">
+            <Col span={8} className="cardCol">
+              <Card className="cardHeros">
                 <p
                   style={{
                     fontSize: "19px",
@@ -145,45 +145,6 @@ const DashCard = () => {
                 </Button>
               </Card>
             </Col>
-            <Col span={8}>
-              <Card className="cardHero">
-                <p
-                  style={{
-                    fontSize: "19px",
-                    fontWeight: "500",
-                    color: "#0e397c",
-                    marginTop: "20px",
-                    textAlign: "center",
-                  }}
-                >
-                  <a style={{ color: "#0e397c" }} href="#!">
-                    Investment Value (USD)
-                  </a>
-                </p>
-                <p
-                  style={{
-                    fontSize: "23px",
-                    fontWeight: "800",
-                    color: "#0e397c",
-                    marginTop: "20px",
-                    textAlign: "center",
-                  }}
-                >
-                  <a style={{ color: "#0e397c" }} href="#!">
-                    $0.00
-                  </a>
-                </p>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  className="myBtn"
-                  block
-                  style={{ cursor: "text" }}
-                >
-                  Cash Balance: $0.00
-                </Button>
-              </Card>
-            </Col>
           </Row>
         </div>
       </Fragment>
@@ -214,11 +175,11 @@ const DashCard = () => {
               fontWeight: "700",
             }}
           >
-            Featured Products
+            My Investment
           </p>
         </div>
         <Row gutter={[24, 24]}>
-          <Col span={8}>
+          <Col span={8} className="cardCol">
             <Card className="cardHero" title={"Fixed Deposit Note"}>
               <Row>
                 <Col span={"16"}>
@@ -246,7 +207,7 @@ const DashCard = () => {
             </Card>
           </Col>
 
-          <Col span={8}>
+          <Col span={8} className="cardCol">
             <Card className="cardHero" title={"Fixed Deposit Note"}>
               <Row>
                 <Col span={"16"}>
@@ -273,7 +234,7 @@ const DashCard = () => {
               </Button>
             </Card>
           </Col>
-          <Col span={8}>
+          <Col span={8} className="cardCol">
             <Card className="cardHero" title={"Treasury Bill"}>
               <Row>
                 <Col span={"16"}>

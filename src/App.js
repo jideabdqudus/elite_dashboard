@@ -10,6 +10,11 @@ import Portfolio from "./pages/Portfolio";
 import {setStateSuccess,setStateError,getUserProfile} from './store/action/authAction'
 // import { Link,useHistory } from "react-router-dom";
 
+import History from "./pages/History";
+import AdminDash from "./admin/Dashboard";
+import Products from "./admin/Products";
+import Investors from "./admin/Investors";
+import AdminHistory from "./admin/History";
 const App = () => {
 const  dispatch = useDispatch()
 const  history = useHistory()
@@ -38,6 +43,11 @@ const  history = useHistory()
           <Route exact path="/dashboard/investments" component={Investments} />
           <Route exact path="/dashboard/portfolio" component={Portfolio} />
           <Route exact path="/dashboard/portfolio" component={Portfolio} />
+          <Route exact path="/dashboard/history" component={History} />
+          <Route exact path="/admin/dashboard" component={AdminDash} />
+          <Route exact path="/admin/products" component={Products} />
+          <Route exact path="/admin/investors" component={Investors} />
+          <Route exact path="/admin/history" component={AdminHistory} />
         </Switch>
       </BrowserRouter>
     </Fragment>

@@ -10,15 +10,15 @@ import {
   BankOutlined,
   ContainerOutlined,
 } from "@ant-design/icons";
-import "../components/components.css";
+import "../adminComponents/components.css";
 
 import { Link } from "react-router-dom";
+import ProductsCard from "../adminComponents/ProductsCard";
 import Logo from "../assets/OriginateLogoOriginal.png";
-import PlansCard from "../components/PlansCard";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-class SiderLayout2 extends React.Component {
+class SiderLayout extends React.Component {
   state = {
     collapsed: true,
   };
@@ -29,9 +29,7 @@ class SiderLayout2 extends React.Component {
 
   render() {
     return (
-      <Layout
-        style={{ minHeight: "100vh", backgroundColor: "#f4f7fa !important" }}
-      >
+      <Layout style={{ backgroundColor: "#f4f7fa !important" }}>
         <Sider
           style={{
             backgroundColor: "#f4f7fa",
@@ -39,7 +37,6 @@ class SiderLayout2 extends React.Component {
             position: "fixed",
             zIndex: "999",
           }}
-          collapsible
           collapsed={this.state.collapsed}
           onCollapse={this.onCollapse}
         >
@@ -64,7 +61,7 @@ class SiderLayout2 extends React.Component {
               /> */}
             </Link>
             <Menu.Item
-              key="2"
+              key="6"
               icon={
                 <BankOutlined
                   style={{
@@ -80,10 +77,11 @@ class SiderLayout2 extends React.Component {
                 marginBottom: "20px",
               }}
             >
-              <Link to="/dashboard">Home</Link>
-            </Menu.Item>
+              <Link to="/admin/dashboard">Home</Link>
+            </Menu.Item>{" "}
             <Menu.Item
-              key="3"
+              to="/admin/products"
+              key="1"
               icon={
                 <BookOutlined
                   style={{
@@ -100,9 +98,10 @@ class SiderLayout2 extends React.Component {
               }}
             >
               {" "}
-              <Link to="/dashboard/investments">Investments</Link>
+              <Link to="/admin/products">Products</Link>
             </Menu.Item>
             <Menu.Item
+              to="/admin/investors"
               key="6"
               icon={
                 <ContainerOutlined
@@ -119,7 +118,27 @@ class SiderLayout2 extends React.Component {
                 marginBottom: "20px",
               }}
             >
-              <Link to="/dashboard/portfolio">Portfolio</Link>
+              <Link to="/admin/investors">Investors</Link>
+            </Menu.Item>
+            <Menu.Item
+              to="admin/history"
+              key="7"
+              icon={
+                <DatabaseOutlined
+                  style={{
+                    fontSize: "20px",
+                    color: "#0a2e65",
+                    marginRight: "40px",
+                  }}
+                />
+              }
+              style={{
+                fontSize: "20px",
+                fontWeight: "bold",
+                marginBottom: "20px",
+              }}
+            >
+              <Link to="/admin/history">History</Link>
             </Menu.Item>
           </Menu>
         </Sider>
@@ -136,17 +155,17 @@ class SiderLayout2 extends React.Component {
                 fontWeight: "bolder",
               }}
             >
-              ACCOUNT OVERVIEW
+              PRODUCT CREATION
             </h1>
             <div
               className="site-layout-background"
               style={{ marginLeft: "80px" }}
             >
-              <PlansCard />
+              <ProductsCard />
             </div>
           </Content>
           <Footer style={{ textAlign: "center" }}>
-            ©2020 Jide Abdul-Qudus || The Qoder{" "}
+            ©2020 Elite Investment{" "}
           </Footer>
         </Layout>
       </Layout>
@@ -154,4 +173,4 @@ class SiderLayout2 extends React.Component {
   }
 }
 
-export default SiderLayout2;
+export default SiderLayout;

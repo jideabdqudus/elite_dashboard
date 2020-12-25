@@ -31,7 +31,7 @@ const PlanHistory = () => {
             <Col span={2} key={"plan._id"}>
               <img src={SavingsImg} alt="Savings" height="50" />
             </Col>
-            <Col span={10}>
+            <Col span={10} className="cardCol">
               <p
                 style={{
                   color: "#0a2e65",
@@ -43,10 +43,10 @@ const PlanHistory = () => {
                 {"₦ 0.00"}
               </p>
               <p style={{ color: "gray", fontWeight: "normal" }}>
-                {"Total Invested"}
+                {"Amount Invested"}
               </p>
             </Col>
-            <Col span={8}>
+            <Col span={4} className="cardCol">
               <p
                 style={{
                   color: "#0a2e65",
@@ -55,13 +55,13 @@ const PlanHistory = () => {
                   margin: "0px",
                 }}
               >
-                {"₦ 0.00"}
+                {"0.00%"}
               </p>
               <p style={{ color: "gray", fontWeight: "normal" }}>
-                {"Current Value"}
+                {"Interest"}
               </p>
             </Col>
-            <Col span={4}>
+            <Col span={4} className="cardCol">
               <p
                 style={{
                   color: "#0a2e65",
@@ -70,10 +70,25 @@ const PlanHistory = () => {
                   margin: "0px",
                 }}
               >
-                {"₦ 0.00"}
+                {"-"}
               </p>
               <p style={{ color: "gray", fontWeight: "normal" }}>
-                {"Total Gain/Loss"}
+                {"Tenure"}
+              </p>
+            </Col>
+            <Col span={4} className="cardCol">
+              <p
+                style={{
+                  color: "#0a2e65",
+                  fontWeight: "700",
+                  fontSize: "20px",
+                  margin: "0px",
+                }}
+              >
+                {"-"}
+              </p>
+              <p style={{ color: "gray", fontWeight: "normal" }}>
+                {"Expected Value"}
               </p>
             </Col>
             <hr />

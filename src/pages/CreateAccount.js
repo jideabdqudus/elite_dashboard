@@ -5,6 +5,7 @@ import { Row, Col } from "antd";
 // import Originate from "../assets/OriginateOrignal.png";
 import NewAccount from "../components/NewAccount";
 import { useDispatch,useSelector} from "react-redux";
+import EliteLogo from "../assets/Elite_Logo.svg";
 
 const CreateAccount = () => {
   const  {success} = useSelector(state => state.auth)
@@ -23,6 +24,13 @@ const CreateAccount = () => {
         <div className="container">
           <Row className="createRow">
             <Col span={12} className="loginHeading">
+              <img
+                src={EliteLogo}
+                alt="Cowrywise"
+                height="100px"
+                width="400px"
+                style={{ marginTop: "20px", marginBottom: "30px" }}
+              />
               {/* <img
                 src={Originate}
                 alt="Cowrywise"

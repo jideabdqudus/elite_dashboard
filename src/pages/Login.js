@@ -5,6 +5,7 @@ import { Row, Col } from "antd";
 import Originate from "../assets/OriginateOrignal.png";
 import Elite from "../assets/Elite_02 2.svg";
 import EliteLogo from "../assets/Elite_Logo.svg";
+import {Link} from "react-router-dom"
 const Login = () => {
   return (
     <Fragment>
@@ -70,7 +71,7 @@ const Login = () => {
                         fontWeight: "bold",
                       }}
                     >
-                      Contact support
+                      <Link to="/admin/dashboard">Contact support</Link>
                     </b>
                   </a>
                 </Col>
