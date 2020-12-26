@@ -17,6 +17,7 @@ const NewAccount = () => {
   const  dispatch = useDispatch()
   const  history = useHistory()
   const [processing, setProcessing] = useState(false)
+  const [ver, setPver] = useState(false)
   const  {error,success} = useSelector(state => state.auth)
   const [otp, setOtp] = useState(false)
 
@@ -30,6 +31,9 @@ const NewAccount = () => {
   });
 
   const { firstName, lastName, email, password ,confirm_password,Otp } = formData;
+  const vf=()=>{
+    setPver(true)
+  }
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -77,7 +81,7 @@ const NewAccount = () => {
 
   return (
     <div className="createForm">
-      { !otp?
+      {  !ver ?
       <Card className="cardHero">
         <Form
           name="normal_login"
@@ -214,6 +218,8 @@ const NewAccount = () => {
                 Old user, <b style={{ color: "#0066f5" }}>Login</b>
               </Link>
             </Form.Item>
+              <b onClick={vf} style={{ color: "#0066f5" }}>verify otp</b>
+
           </Col>
         </Form>
       </Card>:

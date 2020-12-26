@@ -2,7 +2,7 @@ import React, { useState,useEffect } from "react";
 import { Form, Input, Button, Row, Col, Card } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import "./components.css";
-import {login} from "../store/action/authAction";
+import {resend_otp,Verify_otp} from "../store/action/authAction";
 import { Link,useHistory } from "react-router-dom";
 import { useDispatch,useSelector} from "react-redux";
 import {setStateSuccess,setStateError} from '../store/action/authAction'
@@ -10,27 +10,31 @@ import {setStateSuccess,setStateError} from '../store/action/authAction'
 const LoginForm = () => {
   const [formData, setFormData] = useState({
     email: "",
-    password: "",
+    otp: "",
   });
   const [processing, setProcessing] = useState(false)
+  const [votp, setverify] = useState(false)
   const  {error,success} = useSelector(state => state.auth)
 
   const  dispatch = useDispatch()
   const  history = useHistory()
-  const { email, password } = formData;
+  const { email } = formData;
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  const verif=()=>{
+      setverify(true)
+  }
   const onFinish = async () => {
-    if (email === ""|| password === "") {
-      console.log("Please enter all fields", "error");
+    if (email === "") {
+      alert("Please input your email");
     } else {
       setProcessing(true)
-      login(formData,dispatch,history)
+      
+      {votp?Verify_otp(formData,dispatch,history):resend_otp(formData,dispatch,history)}
     }
-  };
-
+  }
   useEffect(() => {
 
     return () => {
@@ -80,72 +84,28 @@ const LoginForm = () => {
               name="email"
             />
           </Form.Item>
-          <Form.Item style={{ color: "#0066f5" }} rules={[{ required: true }]}>
-            <Input
-              style={{
-                height: "50px",
-                borderRadius: "7px",
-                borderColor: "#0066f5",
-                fontSize: "1rem",
-                border: "1px solid rgba(10,46,101,.1)",
-              }}
-              prefix={<LockOutlined className="site-form-item-icon" />}
-              type="password"
-              name="password"
-              value={password}
-              onChange={onChange}
-              placeholder="Password"
-            />
-          </Form.Item>
-          <Form.Item>
-            <a className="login-form-forgot" href="#!">
-              <b style={{ color: "#0066f5" }}>Forgot Password?</b>
-            </a>
-          </Form.Item>
-
           <Row>
-            <Col span={16}>
-              {" "}
-              <Form.Item>
-                <Link
-                  to="/create"
-                  style={{
-                    color: "grey",
-                    fontSize: ".9rem",
-                    fontWeight: "bold",
-                  }}
-                >
-                  New user?{" "}
-                  <b style={{ color: "#0066f5" }}>Create an account</b>
-                </Link>
-              </Form.Item>
-              <Form.Item>
-                <Link
-                  to="/otp"
-                  style={{
-                    color: "grey",
-                    fontSize: ".9rem",
-                    fontWeight: "bold",
-                  }}
-                >
-                  
-                  <b style={{ color: "#0066f5" }}>resend otp</b>
-                </Link>
-
-
-              </Form.Item>
-              
-            </Col>
-            <Col span={8}>
+            <Col span={12}>
               {" "}
               <Form.Item>
                 
               <Button disabled={processing?processing:false} type="primary" htmlType="submit" className="myBtn">
-                  {/* <Link to="/dashboard">Log In</Link> */}
-                 {!processing ? 'LOGIN':'processing'}
+                 {!processing ? 'resend':'processing'}
                 </Button>
               </Form.Item>
+              
             </Col>
+            {/* <Col span={12}>
+              {" "}
+              <Form.Item>
+                
+              <Button  onClick={verif} disabled={processing?processing:false} type="primary" htmlType="submit" className="myBtn">
+                 {!processing ? 're-verify':'processing'}
+                </Button>
+              </Form.Item>
+              
+            </Col> */}
+            
           </Row>
         </Form>
       </Card>

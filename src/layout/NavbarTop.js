@@ -1,8 +1,15 @@
 import React from "react";
 import { PageHeader, Button } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link ,useHistory} from "react-router-dom";
 const NavbarTop = () => {
+  const  history = useHistory()
+
+  const logout=()=>{
+    
+    localStorage.removeItem("token")
+    history.push("/")
+}
   return (
     <div className="site-page-header-ghost-wrapper">
       <PageHeader
@@ -11,7 +18,7 @@ const NavbarTop = () => {
         subTitle=" Dashboard"
         extra={[
           <Link to="/">
-            <Button key="1" type="primary" style={{ borderRadius: "30px" }}>
+            <Button onClick={logout} key="1" type="primary" style={{ borderRadius: "30px" }}>
               <LogoutOutlined
                 style={{
                   fontSize: 20,

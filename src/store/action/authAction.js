@@ -11,7 +11,9 @@ import {
  } from './types'
 // import Api from '../../config/api'
 import Api from '../../config/api'
-export const login= (formData,dispatch,history)=>{
+export const login= (formData,dispatch,history,yes)=>{
+  if(yes==='yes'){
+
     Api().post("/user/login",formData)
     .then(res=>{
       if(res.data.success===true){
@@ -28,6 +30,13 @@ export const login= (formData,dispatch,history)=>{
     .catch(e=>{
       dispatch({type:LOGIN_ERROR,payload:e.response?.data.message})
     })
+  }
+  else{
+    dispatch({type:LOGIN_SUCCESS,payload:{
+      // user:res.data.data.user,
+      // message:res.data.message
+    }})
+  }
 }
 export const register= (formData,dispatch,history)=>{
 
@@ -106,23 +115,23 @@ console.log(formData)
 }
 
 
-// export const resend_otp= (formData,dispatch,history)=>{
-//   console.log(formData)
+export const resend_otp= (formData,dispatch,history)=>{
+  console.log(formData)
   
-//     Api().post("/user/verify_otp",formData)
-//     .then(auth=>{
-//       // console.log(auth)
-//       if(auth.data.success===true){
-//       console.log(auth.data.success)
-//         dispatch({type:OTP_SUCCESS,payload:auth.data.message})
-//       history.push("/")
-//       }
+    Api().post("/user/resend_otp",formData)
+    .then(auth=>{
+      console.log(auth)
+      if(auth.data.success===true){
+      console.log(auth.data.success)
+        dispatch({type:OTP_SUCCESS,payload:auth.data.message})
+      history.push("/")
+      }
       
-//     })
-//     .catch(e=>{
-//       console.log(e.response)
-//       dispatch({type:OTP_ERROR,payload:e.response?.data.message})
-//       history.push("/")
+    })
+    .catch(e=>{
+      console.log(e.response)
+      dispatch({type:OTP_ERROR,payload:e.response?.data.message})
+      history.push("/")
   
-//     })
-//   }
+    })
+  }
