@@ -1,0 +1,215 @@
+.cardHero {
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 5px 15px rgba(0, 115, 231, 0.08);
+  margin: 10px;
+  padding: 1rem 1rem 1rem;
+}
+
+.treasureCard {
+  border-radius: 7px;
+  box-shadow: 0 5px 15px rgba(0, 115, 231, 0.08);
+  background-image: url(../assets/treasure-new-bg.svg) !important;
+  background-size: cover !important;
+  margin: 10px;
+  background-color: skyblue !important;
+  padding: 1rem 1rem 1rem;
+}
+
+.fixedDepositCard {
+  border-radius: 7px;
+  box-shadow: 0 5px 15px rgba(0, 115, 231, 0.08);
+  background-image: url(../assets/fixed-dep-bg.svg) !important;
+  background-size: cover !important;
+  margin: 10px;
+  background-color: #fed304 !important;
+  padding: 1rem 1rem 1rem;
+}
+.equitiesCard {
+  border-radius: 7px;
+  box-shadow: 0 5px 15px rgba(0, 115, 231, 0.08);
+  background-image: url(../assets/equities-bg-new.svg) !important;
+  background-size: cover !important;
+  margin: 10px;
+  background-color: greenyellow !important;
+  padding: 1rem 1rem 1rem;
+}
+.bondsCard {
+  border-radius: 7px;
+  box-shadow: 0 5px 15px rgba(0, 115, 231, 0.08);
+  background-image: url(../assets/bonds-bg-new.svg) !important;
+  background-size: cover !important;
+  margin: 10px;
+  background-color: #fade9d !important;
+  padding: 1rem 1rem 1rem;
+}
+
+.myBtn {
+  outline: 0;
+  background-color: #0066f5;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.95rem;
+  min-height: 42px;
+  color: #fff;
+  line-height: 42px;
+  position: relative;
+  text-decoration: none;
+  padding: 0 1.8em 2.5px;
+  transition-duration: 0.3s;
+  font-family: CW BR Firma, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+  font-weight: 600;
+  text-transform: capitalize;
+  transition-property: background-color, opacity, color, transform, box-shadow;
+  transition-timing-function: ease-in-out;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transform-style: preserve-3d;
+  will-change: background-color, opacity, color, transform, box-shadow;
+  box-shadow: 0 2px 4px 0 rgba(10, 46, 101, 0.08);
+}
+
+#components-layout-demo-side .logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+
+.site-layout {
+  background: #fff;
+}
+.site-layout .site-layout-background {
+  background: #fff;
+  padding: 30px;
+}
+
+.createForm {
+  max-width: 100% !important;
+  flex: 0 0 100% !important;
+}
+
+.loginForm {
+  max-width: 100% !important;
+  flex: 0 0 100% !important;
+}
+
+.dashBalance {
+  max-width: 100% !important;
+  flex: 0 0 20% !important;
+}
+
+.dashGrowth {
+  max-width: 100% !important;
+  margin: 10px;
+  flex: 0 0 20% !important;
+}
+
+.dashSavingsCard {
+  max-width: 100% !important;
+  flex: 0 0 25% !important;
+}
+.dashMaturityCard {
+  max-width: 100% !important;
+  flex: 0 0 40% !important;
+}
+
+.dashInvestCard {
+  max-width: 100% !important;
+  flex: 0 0 75% !important;
+}
+
+.dashInvestItem {
+  max-width: 100% !important;
+  flex: 0 0 50% !important;
+}
+
+.planFormInput {
+  transition: border-color 0.3s ease-in, color 1s linear;
+  width: 100%;
+  height: 56px;
+  background-color: transparent;
+  border-radius: 4px;
+  outline: none;
+  color: #0a2e65;
+  border: 1px solid rgba(10, 46, 101, 0.1);
+  font-family: CW BR Firma, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+  font-size: 0.95rem;
+  font-size: 30px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.planText {
+  font-size: 3rem;
+  color: #0a2e65;
+  margin-right: 40px;
+}
+
+.dashAppetiteScore {
+  max-width: 100% !important;
+  flex: 0 0 25% !important;
+}
+
+@media screen and (max-width: 600px) {
+  .loginForm {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+  .createForm {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+  .dashBalance {
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+  .dashGrowth {
+    max-width: 100% !important;
+    flex: 0 0 20% !important;
+  }
+  .dashSavingsCard {
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+  .dashMaturityCard {
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+  .dashInvestCard {
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+  .dashInvestItem {
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+  .dashAppetiteScore {
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+  .site-layout .site-layout-background {
+    background: #fff;
+    padding: 5px;
+  }
+  .cardHero {
+    background: #fff !important;
+    border-radius: 7px;
+    box-shadow: 0 5px 15px rgba(0, 115, 231, 0.08);
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .cardCol {
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+}
