@@ -6,15 +6,17 @@ import {
   InputNumber,
   Row,
   Col,
+  Select,
   Card,
   Divider,
 } from "antd";
 import React,{useEffect,useState} from 'react'
 
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-import {create_investment,view_all_products } from "../store/action/authAction";
+import {create_investment,view_all_products,delete_investment } from "../store/action/authAction";
 import { Link,useHistory } from "react-router-dom";
 import { useDispatch,useSelector} from "react-redux";
+const {Option} = Select
 const ProductsCard = () => {
   
   const  dispatch = useDispatch()
@@ -22,15 +24,43 @@ const ProductsCard = () => {
   // const  {error,success} = useSelector(state => state.auth)
   const  history = useHistory()
   const [update,setupdate] =useState(false)
+  const [pn,setpn] =useState('')
+  const [md,setmd] =useState('')
+  const [rt,setrt] =useState('')
+const   changepn =(val)=>{setpn(val.target.value)}
+const   changemd =(val)=>{setmd(val)
+  console.log(val)
+}
+const   changert =(val)=>{
+  // setrt(val)
+   console.log(val)
+}
+
   const onFinish = (values) => {
     console.log("Success:", values);
-    create_investment(values,dispatch,history)
-   setupdate(true)
+    console.log("Success:", values.intrest);
+    setmd(values.MaturityDate)
+    setpn()
+    setrt()
+  //   create_investment(values,dispatch,history)
+  //  setupdate(true)
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+  const delete_prod = (id)=>{
+    console.log(id)
+    delete_investment(dispatch,id,history)
+  }
+  const edit = ( value)=>{
+    console.log(parseInt(value.intrest))
+    console.log(value.product_name)
+    console.log(value.MaturityDate)
+    setmd(value.MaturityDate)
+    setpn(value.product_name)
+    setrt(8)
+  }
   // view_all_product
   const fetch = async () => {
    let allProduct = await view_all_products(dispatch,history)
@@ -62,33 +92,48 @@ const ProductsCard = () => {
         >
           <Row>
             <Col span={6}>
-              <Input />
+              <Input 
+              value={pn}
+              onChange={changepn}
+              />
             </Col>
           </Row>
         </Form.Item>
 
+        
         <Form.Item
           label="MaturityDate"
           name="MaturityDate"
           rules={[{ required: true }]}
         >
-          <DatePicker />
+          <Select 
+          onChange={changemd}
+          // defaultValue={md}
+          // defaultValue="12 months"
+          style={{width:120}}>
+          <Option value="3 months"> 3 months</Option>
+          <Option value="6 months"> 6 months</Option>
+          <Option value="12 months"> 12 months</Option>
+          <Option value="18 months"> 18 months</Option>
+          <Option value="24 months"> 24 months</Option>
+
+          </Select>
         </Form.Item>
 
-        <Form.Item label="Tenor" name="Tenor" rules={[{ required: true }]}>
-          <DatePicker />
-        </Form.Item>
+        
 
-        <Form.Item label="Tenor-duration" name="Tenor_duration" rules={[{ required: true }]}>
-          <InputNumber />
-        </Form.Item>
+        
 
         <Form.Item
           label="intrest"
           name="intrest"
           rules={[{ required: true }]}
         >
-          <InputNumber />
+          <InputNumber 
+          
+          value={rt}
+
+          onChange={changert}/>
         </Form.Item>
 
         <Form.Item>
@@ -127,11 +172,13 @@ const ProductsCard = () => {
             <Col span={12}>
               <EditOutlined
                 twoToneColor="#52c41a"
+              onClick={()=>{edit(each)}}
                 style={{ fontSize: "30px" }}
               />
             </Col>
             <Col span={12}>
               <DeleteOutlined
+              onClick={()=>{delete_prod(each._id)}}
                 twoToneColor="#52c41a"
                 style={{ fontSize: "30px" }}
               />

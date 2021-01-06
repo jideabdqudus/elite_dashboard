@@ -105,16 +105,13 @@ export const resend_otp= (formData,dispatch,history)=>{
   console.log({formData})
     Api().post("/user/resend_otp",formData)
     .then(auth=>{
-      console.log(auth)
       if(auth.data.success===true){
-      console.log(auth.data.success)
         dispatch({type:OTP_SUCCESS,payload:auth.data.message})
       history.push("/")
       }
       
     })
     .catch(e=>{
-      console.log(e.response)
       dispatch({type:OTP_ERROR,payload:e.response?.data.message})
       history.push("/")
   
@@ -129,7 +126,8 @@ export const resend_otp= (formData,dispatch,history)=>{
       .then(auth=>{
         console.log(auth)
         if(auth.data.success===true){
-        console.log(auth.data.success)
+        view_all_products(dispatch,history)
+
           dispatch({type:OTP_SUCCESS,payload:auth.data.message})
         // history.push("/")
 
@@ -137,8 +135,30 @@ export const resend_otp= (formData,dispatch,history)=>{
         
       })
       .catch(e=>{
-        console.log(e.response)
         dispatch({type:OTP_ERROR,payload:e.response?.data.message})
+        
+        // history.push("/")
+    
+      })
+    
+    }
+    
+  export const delete_investment= (dispatch,id,history)=>{
+      Api().delete(`/investment/delete_each_product/${id}`)
+      .then(auth=>{
+        console.log(auth)
+        if(auth.data.success===true){
+          view_all_products(dispatch,history)
+        console.log(auth.data.success)
+          dispatch({type:SUCCESS,payload:auth.data.message})
+        // history.push("/")
+
+        }
+        
+      })
+      .catch(e=>{
+        console.log(e.response)
+        dispatch({type:ERROR,payload:e.response?.data.message})
         
         // history.push("/")
     
