@@ -1,13 +1,13 @@
 import mongoose from 'mongoose'
 const  {Schema,model} = mongoose
 let investmentSchema= new Schema({
-    product_name:{
-        type:String,
-        required:[true,"product require"]
+    investment_info:{
+        type:Object,
+        required:true
     },
-    color:{
+    userId:{
         type:String,
-        // required:true
+        required:true
     },
     
   

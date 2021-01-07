@@ -13,24 +13,13 @@ let productsSchema= new Schema({
         type:Number,
         required:true
     },
-    duration:{
-        type:String,
-        // required:true
-    },
-    description:{
-        type:String,
-        // required:true
-    },
-    Tenor_duration:{
-        type:String,
-        required:true
-    },
-    Tenor:{
-        type:Date,
-        required:true
-    },
+   
     MaturityDate:{
-        type:Date,
+        type:String,
+        required:true
+    },
+    price:{
+        type:String,
         required:true
     }
   

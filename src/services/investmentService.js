@@ -9,6 +9,8 @@ import bcrypt from 'bcryptjs';
 import moment from 'moment';
 import jwt from 'jsonwebtoken';
 import Email  from '../utility/mailServices.js'
+import Investment from "../models/investment.js";
+
 
 const  {userExist,eachUser,validateId,
     allUser} = validator;
@@ -18,22 +20,16 @@ const {eachProduct,productValidate} = productValidator
 
 class adminService {
     async createInvestment(req,res){
-        // console.log(req.body)
-        // product_name: 'qwjk',
-        // MaturityDate: '2020-12-25T17:29:17.907Z',
-        // Tenor: '2020-12-18T17:29:13.683Z',
-        // Tenor_duration: 6,
-        // intrest: 1.3
-        // 'Product Type': 'qq',
-        // 'Maturity Date': '2020-11-30T10:02:12.085Z',
-        // Tenor: '2020-12-07T10:02:15.662Z',
-        // 'Interest Rate': 1.2
-        let {product_name,intrest,Tenor_duration,MaturityDate,Tenor} =req.body 
-        // console.log(  MaturityDate>Tenor_duration)
-        // console.log(  MaturityDate - Tenor_duration)
 
+        let {product_name,intrest,price,MaturityDate} =req.body 
+             if(!price || isNaN(price) || price<1){
+            throw new customError("please input a valid price")
+             }
+             if(!intrest || isNaN(intrest) || intrest<1){
+                throw new customError("please input a valid intrest rate")
+                 }
         // await productValidate(req.body)
-        let saveProduct =await new Product({product_name,intrest,Tenor_duration,MaturityDate,Tenor});
+        let saveProduct =await new Product({product_name,price,intrest,MaturityDate});
         // console.log(saveProduct)
         saveProduct.save()
         return 
@@ -88,21 +84,41 @@ class adminService {
                
             }
 
-
+        async fetch__investment(req,res){
+            let userId = req.user._id
+            let all__user__investment = await Investment.find({userId})
+            let split =[]
+            all__user__investment.forEach((each)=>{
+                let duration=each.investment_info.metadata.MaturityDate.split(" ")[0]
+                let numberOFmonth  =2628000000.00*duration
+                let transdate=Date.parse(each.investment_info.transaction_date)
+                let matdata=(transdate+numberOFmonth)
+                const endDate = new Date(matdata)
+                // 
+                console.log(endDate.getDate())
+                console.log(endDate.getFullYear())
+                console.log(endDate.getMonth())
+                let remainigdate=matdata-Date.now()
+                let remainingdays=(remainigdate/(60*60*24*1000)).toFixed(0)
+                let each_transaction={
+                    product_name:each.investment_info.metadata.product_name,
+                    product_price:each.investment_info.metadata.product_price,
+                    requested_amount:each.investment_info.requested_amount/100,
+                    transaction_date:each.investment_info.transaction_date,
+                    intrest:each.investment_info.metadata.intrest,
+                    remainigdate:remainingdays,
+                    MaturityDate:`${endDate.getFullYear() } -${endDate.getMonth()+1}-${endDate.getDate()+1}`,
+                }
+              
+           split.push(each_transaction)
+        })
+return split
+        }
 
 
 
         async moment(req,res){
-//             var a = moment();
-// var b = moment.utc();
-// let mine =`2020-12-02T09:56:50.595+00:00`
-let mine =moment();
-// a.format();  // 2013-02-04T10:35:24-08:00
-// b.format();  // 2013-02-04T18:35:24+00:00
-// a.valueOf(); // 1360002924000
-// b.valueOf(); // 1360002924000
-// return {a,b:`2020-12-02T09:56:50.595+00:00`}
-return{ formate:mine.format(),value:mine.valueOf()}
+      return 
 
 
         }

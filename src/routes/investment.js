@@ -41,6 +41,10 @@ router.get("/moment",
 invCtrl.moment);
 
 
+router.get("/fetch__investment",
+auth,
+Role(["admin","user"]),
+invCtrl.fetch__investment);
 
 
 

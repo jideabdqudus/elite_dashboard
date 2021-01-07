@@ -8,9 +8,11 @@ import Role  from '../helper/Role.js'
 /* GET home page. */
 
 // registeration route
-router.get("/getALLUsers",
+router.get("/callback",
 auth,
-Role(["admin"]),
-payCtrl.pay);
+// Role(["admin"]),
+payCtrl.callback);
 
 export default  router;
+// redirecturl
+// "http://localhost:8080/v1/api/paystack/callback?trxref=1609997958985"

@@ -30,6 +30,10 @@ class investmentCntroller{
        res.status(200).json(response(true,'each product fetched',data)) 
     }
     
+    async fetch__investment(req,res){
+        let data = await invServ.fetch__investment(req,res);
+       res.status(200).json(response(true,'ivestment fetched',data)) 
+    }
     
 }
 export default new investmentCntroller()

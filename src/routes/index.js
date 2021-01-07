@@ -6,7 +6,7 @@ import investment from "./investment.js";
 const  router = express.Router();
 
 router.use('/user',user)
-router.use('/pay',pay)
+router.use('/paystack',pay)
 router.use('/admin',admin)
 router.use('/investment',investment)
 
