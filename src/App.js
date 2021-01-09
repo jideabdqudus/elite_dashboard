@@ -22,7 +22,6 @@ const App = () => {
           <Route exact path="/dashboard/plans" component={Plans} />
           <Route exact path="/dashboard/investments" component={Investments} />
           <Route exact path="/dashboard/portfolio" component={Portfolio} />
-          <Route exact path="/dashboard/portfolio" component={Portfolio} />
           <Route exact path="/dashboard/history" component={History} />
           <Route exact path="/admin/dashboard" component={AdminDash} />
           <Route exact path="/admin/products" component={Products} />
