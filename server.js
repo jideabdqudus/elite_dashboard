@@ -1,5 +1,4 @@
-// import 'express-async-errors'
-
+import 'express-async-errors'
 import express from "express";
 const app = express();
 import http from "http";
