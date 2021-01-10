@@ -102,7 +102,7 @@ class SiderLayout2 extends React.Component {
               {" "}
               <Link to="/dashboard/investments">Investments</Link>
             </Menu.Item>
-            <Menu.Item
+            {/* <Menu.Item
               key="6"
               icon={
                 <ContainerOutlined
@@ -120,7 +120,7 @@ class SiderLayout2 extends React.Component {
               }}
             >
               <Link to="/dashboard/portfolio">Portfolio</Link>
-            </Menu.Item>
+            </Menu.Item> */}
           </Menu>
         </Sider>
         <Layout className="site-layout" style={{ backgroundColor: "#f4f7fa" }}>

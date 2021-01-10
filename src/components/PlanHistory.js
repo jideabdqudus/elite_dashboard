@@ -27,6 +27,7 @@ const PlanHistory = () => {
     <div style={{ cursor: "pointer" }}>
       <Fragment>
         <div>
+        
           <Row key={"plan._id"}>
             <Col span={2} key={"plan._id"}>
               <img src={SavingsImg} alt="Savings" height="50" />
@@ -40,7 +41,7 @@ const PlanHistory = () => {
                   margin: "0px",
                 }}
               >
-                {"₦ 0.00"}
+                {"₦ 12,200"}
               </p>
               <p style={{ color: "gray", fontWeight: "normal" }}>
                 {"Amount Invested"}
@@ -55,7 +56,7 @@ const PlanHistory = () => {
                   margin: "0px",
                 }}
               >
-                {"0.00%"}
+                {"1.20%"}
               </p>
               <p style={{ color: "gray", fontWeight: "normal" }}>
                 {"Interest"}
@@ -70,10 +71,10 @@ const PlanHistory = () => {
                   margin: "0px",
                 }}
               >
-                {"-"}
+                {"26-03-2020"}
               </p>
               <p style={{ color: "gray", fontWeight: "normal" }}>
-                {"Tenure"}
+                {"Date Withdrawn"}
               </p>
             </Col>
             <Col span={4} className="cardCol">
@@ -85,10 +86,10 @@ const PlanHistory = () => {
                   margin: "0px",
                 }}
               >
-                {"-"}
+                {"₦ 45,200"}
               </p>
               <p style={{ color: "gray", fontWeight: "normal" }}>
-                {"Expected Value"}
+                {"Amount Withdrawn"}
               </p>
             </Col>
             <hr />
