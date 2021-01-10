@@ -24,8 +24,8 @@ import { Link,useHistory } from "react-router-dom";
 import { useDispatch,useSelector} from "react-redux";
 import  { adminDashboard } from "../store/action/authAction.js";
 const DashCard = () => {
-  const dispatch =useDispatch()
 const  {products,active_user} = useSelector(state => state?.auth)
+const dispatch =useDispatch()
 
   const  history = useHistory()
   // const  {products} = useSelector(state => state?.auth)

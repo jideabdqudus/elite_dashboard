@@ -19,15 +19,20 @@ import Chart from "../assets/naira_funds_blue.77b50e2.svg";
 import Drop from "../assets/plan.bffb472.svg";
 import Box from "../assets/giftbox-white.90fb8b4.svg";
 import Fire from "../assets/fire.svg";
-import { Link } from "react-router-dom";
-import { useSelector} from "react-redux";
+import  { fetch__investment } from "../store/action/authAction.js";
+import { Link,useHistory } from "react-router-dom";
+import { useDispatch,useSelector} from "react-redux";
+import  Api from "../config/api";
 
 
 const DashCard = () => {
   const  {error,userData ,success}= useSelector(state => state?.auth)
+  const dispatch =useDispatch()
+  const  history = useHistory()
 
   const [form] = Form.useForm();
-  const [checkNick, setCheckNick] = useState(false);
+        const [checkNick, setCheckNick] = useState(false);//
+        const [Myinvxt, setMyinvxt] = useState([]);//
   useEffect(() => {
     form.validateFields(["nickname"]);
   }, [checkNick]);
@@ -78,6 +83,30 @@ const DashCard = () => {
   const handleCancel = (e) => {
     setVisible(false);
   };
+  const fetch__inv= ()=>{
+    Api().get("/investment/fetch__investment")
+    .then(auth=>{
+      console.log(auth.data.data)
+      if(auth.data.data){
+        setMyinvxt(auth.data.data)
+        let total=0
+        auth.data.data.map((each)=>{
+          total=+each.product_price
+        })
+console.log(total)
+
+      }
+    })
+    .catch(e=>{
+    })
+  
+  }
+  useEffect(() => {
+    fetch__inv()
+    return () => {
+      // cleanup
+    }
+  }, [])
   return (
     <div>
       <Fragment>
@@ -119,6 +148,9 @@ const DashCard = () => {
                 >
                   <a style={{ color: "#0e397c" }} href="#!">
                     Current Investment Value
+                    {/* {Myinvxt.map(()=>(
+                      
+                    ))} */}
                   </a>
                 </p>
                 <p
@@ -179,47 +211,47 @@ const DashCard = () => {
           </p>
         </div>
         <Row gutter={[24, 24]}>
-          <Col span={8} className="cardCol">
-            <Card className="cardHero" title={"Fixed Deposit Note"}>
-              <Row>
-                <Col span={"16"}>
-                  <p style={{ margin: "0px", color: "red" }}>Maturity Date</p>
-                  <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                    Mar 01, 2021
-                  </p>
-                </Col>
-                <Col span={"8"}>
-                  <p style={{ margin: "0px", color: "red" }}>Rate</p>
-                  <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                    1.50% pa
-                  </p>
-                </Col>
-              </Row>
-              <Button
-                type="primary"
-                htmlType="submit"
-                className="myBtn"
-                block
-                onClick={showModal}
-              >
-                80 days to maturity
-              </Button>
-            </Card>
-          </Col>
+          {Myinvxt.map(each=>(
+            
+
+            // product_name: "elite 200"
+            // product_price: "1000"
+            // remainigdate: "547"
+            // requested_amount: 1010
+            // transaction_date: "2021-01-07T08:37:15.000Z"
 
           <Col span={8} className="cardCol">
-            <Card className="cardHero" title={"Fixed Deposit Note"}>
+            <Card className="cardHero" title={each.product_name}>
               <Row>
-                <Col span={"16"}>
+                <Col span={"24"}>
                   <p style={{ margin: "0px", color: "red" }}>Maturity Date</p>
                   <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                    May 04, 2021
+                    {each.MaturityDate}
                   </p>
                 </Col>
-                <Col span={"8"}>
+                <Col span={"12"}>
                   <p style={{ margin: "0px", color: "red" }}>Rate</p>
                   <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                    1.71% pa
+                    {each.intrest} %
+                  </p>
+                </Col>
+                
+                <Col span={"12"}>
+                  <p style={{ margin: "0px", color: "red" }}>Amount invested</p>
+                  <p style={{ fontSize: "22px", fontWeight: "700" }}>
+                    {each.product_price} 
+                  </p>
+                </Col>
+                <Col span={"12"}>
+                  <p style={{ margin: "0px", color: "red" }}>Amount expected</p>
+                  <p style={{ fontSize: "22px", fontWeight: "700" }}>
+                    {each.intrest *each.product_price} 
+                  </p>
+                </Col>
+                <Col span={"24"}>
+                  <p style={{ margin: "0px", color: "red" }}>Transaction date</p>
+                  <p style={{ fontSize: "22px", fontWeight: "700" }}>
+                    {each.transaction_date}
                   </p>
                 </Col>
               </Row>
@@ -230,37 +262,14 @@ const DashCard = () => {
                 block
                 onClick={showModal}
               >
-                144 days to maturity
+                {each.remainigdate} days to maturity
               </Button>
             </Card>
           </Col>
-          <Col span={8} className="cardCol">
-            <Card className="cardHero" title={"Treasury Bill"}>
-              <Row>
-                <Col span={"16"}>
-                  <p style={{ margin: "0px", color: "red" }}>Maturity Date</p>
-                  <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                    Aug 26, 2021
-                  </p>
-                </Col>
-                <Col span={"8"}>
-                  <p style={{ margin: "0px", color: "red" }}>Rate</p>
-                  <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                    1.01% pa
-                  </p>
-                </Col>
-              </Row>
-              <Button
-                type="primary"
-                htmlType="submit"
-                className="myBtn"
-                block
-                onClick={showModal}
-              >
-                280 days to maturity
-              </Button>
-            </Card>
-          </Col>
+          ))}
+
+        
+         
         </Row>
       </div>
       <div style={{ margin: "100px" }}>

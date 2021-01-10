@@ -37,7 +37,7 @@ const InvestmentHistory = () => {
                   <Col span={"8"}>
                     <p style={{ margin: "0px", color: "red" }}>Amount</p>
                     <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                      ₦120,000
+                      ₦120,0000
                     </p>
                   </Col>
                 </Row>

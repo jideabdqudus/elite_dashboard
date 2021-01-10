@@ -173,21 +173,38 @@ export const resend_otp= (formData,dispatch,history)=>{
         console.log(auth.data.data)
         if(auth.data.success===true){
           dispatch({type:PRODUCT_FETCH_SUCCESS,
-            // payload:auth.data.message,
             products:auth.data.data})
-        // history.push("/")
         }
         
       })
       .catch(e=>{
         console.log(e.response)
         dispatch({type:OTP_ERROR,payload:e.response?.data.message})
-        // history.push("/")
-        // return 
     
       })
     
     }
+
+
+    export const fetch__investment= (dispatch,history)=>{
+      Api().get("/investment/fetch__investment")
+      .then(auth=>{
+        console.log(auth.data.data)
+        // if(auth.data.success===true){
+        //   dispatch({type:PRODUCT_FETCH_SUCCESS,
+        //     products:auth.data.data})
+        // }
+        
+      })
+      .catch(e=>{
+        console.log(e.response)
+        // dispatch({type:OTP_ERROR,payload:e.response?.data.message})
+    
+      })
+    
+    }
+
+
     // 
     export const adminDashboard= (dispatch,history)=>{
       Api().get("/admin/adminDashboard")

@@ -18,36 +18,27 @@ import { Link,useHistory } from "react-router-dom";
 import { useDispatch,useSelector} from "react-redux";
 const {Option} = Select
 const ProductsCard = () => {
-  
+  const [form] = Form.useForm();
+
+  // const values = await form.validateFields();
+
   const  dispatch = useDispatch()
   const  {products} = useSelector(state => state?.auth)
   // const  {error,success} = useSelector(state => state.auth)
   const  history = useHistory()
   const [update,setupdate] =useState(false)
-  const [pn,setpn] =useState('')
-  const [md,setmd] =useState('')
-  const [rt,setrt] =useState('')
-const   changepn =(val)=>{setpn(val.target.value)}
-const   changemd =(val)=>{setmd(val)
-  console.log(val)
-}
-const   changert =(val)=>{
-  // setrt(val)
-   console.log(val)
-}
+
+
 
   const onFinish = (values) => {
     console.log("Success:", values);
-    console.log("Success:", values.intrest);
-    setmd(values.MaturityDate)
-    setpn()
-    setrt()
-  //   create_investment(values,dispatch,history)
+  // form.resetFields()
+    create_investment(values,dispatch,history)
   //  setupdate(true)
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    alert("Please fill in the provided field ", errorInfo);
   };
   const delete_prod = (id)=>{
     console.log(id)
@@ -57,9 +48,7 @@ const   changert =(val)=>{
     console.log(parseInt(value.intrest))
     console.log(value.product_name)
     console.log(value.MaturityDate)
-    setmd(value.MaturityDate)
-    setpn(value.product_name)
-    setrt(8)
+    
   }
   // view_all_product
   const fetch = async () => {
@@ -81,7 +70,7 @@ const   changert =(val)=>{
     <div>
       <Form
         name="basic"
-        initialValues={{ remember: true }}
+        initialValues={{ remember:false }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
@@ -93,8 +82,6 @@ const   changert =(val)=>{
           <Row>
             <Col span={6}>
               <Input 
-              value={pn}
-              onChange={changepn}
               />
             </Col>
           </Row>
@@ -107,9 +94,6 @@ const   changert =(val)=>{
           rules={[{ required: true }]}
         >
           <Select 
-          onChange={changemd}
-          // defaultValue={md}
-          // defaultValue="12 months"
           style={{width:120}}>
           <Option value="3 months"> 3 months</Option>
           <Option value="6 months"> 6 months</Option>
@@ -131,9 +115,16 @@ const   changert =(val)=>{
         >
           <InputNumber 
           
-          value={rt}
-
-          onChange={changert}/>
+          />
+        </Form.Item>
+        <Form.Item
+          label="price"
+          name="price"
+          rules={[{ required: true }]}
+        >
+          <InputNumber 
+          
+          />
         </Form.Item>
 
         <Form.Item>
@@ -164,8 +155,17 @@ const   changert =(val)=>{
               <p style={{ fontSize: "22px", fontWeight: "700" }}>{each.intrest}% pa</p>
             </Col>
           </Row>
+          <Row>
+            
+            <Col span={"8"}>
+              <p style={{ margin: "0px", color: "red" }}>Price</p>
+              <p style={{ fontSize: "22px", fontWeight: "700" }}>#{each.price}</p>
+            </Col>
+          </Row>
+
+
           <Button type="primary" htmlType="submit" className="myBtn" block>
-            80 days to maturity
+          {each.MaturityDate} to maturity
           </Button>
           <Divider />
           <Row>
