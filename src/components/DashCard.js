@@ -20,11 +20,10 @@ import Drop from "../assets/plan.bffb472.svg";
 import Box from "../assets/giftbox-white.90fb8b4.svg";
 import Fire from "../assets/fire.svg";
 import { Link } from "react-router-dom";
-import { useSelector} from "react-redux";
-
+import { useSelector } from "react-redux";
 
 const DashCard = () => {
-  const  {error,userData ,success}= useSelector(state => state?.auth)
+  const { error, userData, success } = useSelector((state) => state?.auth);
 
   const [form] = Form.useForm();
   const [checkNick, setCheckNick] = useState(false);
