@@ -22,6 +22,22 @@ const InvestmentHistory = () => {
   return (
     <div className="card-container">
       <Tabs type="card">
+      <TabPane tab="Withdrawals" key="1">
+          <div>
+            <Col>
+              <Card
+                style={{
+                  backgroundColor: "#f4f7fa",
+                  borderTopRightRadius: "15px",
+                  borderBottomLeftRadius: "15 px",
+                }}
+              >
+                <PlanHistory />
+              </Card>
+            </Col>
+          </div>
+          <Divider />
+        </TabPane>
         <TabPane tab="Withdrawals" key="2">
           <div>
             <Col>
