@@ -14,6 +14,7 @@ import {
 } from "antd";
 import { Link } from "react-router-dom";
 import "./components.css";
+import PlanHistory from "./PlanHistory";
 
 const { TabPane } = Tabs;
 
@@ -21,99 +22,37 @@ const InvestmentHistory = () => {
   return (
     <div className="card-container">
       <Tabs type="card">
-        <TabPane tab="Investments" key="1">
-          <Row>
-            <Col span={8} className="cardCol">
-              <Card className="cardHero" title={"Fixed Deposit Note"}>
-                <Row>
-                  <Col span={"16"}>
-                    <p style={{ margin: "0px", color: "red" }}>
-                      Investment Date
-                    </p>
-                    <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                      Dec 24, 2020
-                    </p>
-                  </Col>
-                  <Col span={"8"}>
-                    <p style={{ margin: "0px", color: "red" }}>Amount</p>
-                    <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                      ₦120,0000
-                    </p>
-                  </Col>
-                </Row>
+      <TabPane tab="Withdrawals" key="1">
+          <div>
+            <Col>
+              <Card
+                style={{
+                  backgroundColor: "#f4f7fa",
+                  borderTopRightRadius: "15px",
+                  borderBottomLeftRadius: "15 px",
+                }}
+              >
+                <PlanHistory />
               </Card>
             </Col>
-          </Row>
+          </div>
           <Divider />
-          <Row>
-            <Col span={8} className="cardCol">
-              <Card className="cardHero" title={"Fixed Deposit Note"}>
-                <Row>
-                  <Col span={"16"}>
-                    <p style={{ margin: "0px", color: "red" }}>
-                      Investment Date
-                    </p>
-                    <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                      Oct 1, 2020
-                    </p>
-                  </Col>
-                  <Col span={"8"}>
-                    <p style={{ margin: "0px", color: "red" }}>Amount</p>
-                    <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                      ₦300,000
-                    </p>
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
-          </Row>
         </TabPane>
         <TabPane tab="Withdrawals" key="2">
-          <Row>
-            <Col span={8} className="cardCol">
-              <Card className="cardHero" title={"Fixed Deposit Note"}>
-                <Row>
-                  <Col span={"16"}>
-                    <p style={{ margin: "0px", color: "red" }}>
-                      Withdrawal Date
-                    </p>
-                    <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                      Dec 25, 2020
-                    </p>
-                  </Col>
-                  <Col span={"8"}>
-                    <p style={{ margin: "0px", color: "red" }}>Amount</p>
-                    <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                      ₦210,000
-                    </p>
-                  </Col>
-                </Row>
+          <div>
+            <Col>
+              <Card
+                style={{
+                  backgroundColor: "#f4f7fa",
+                  borderTopRightRadius: "15px",
+                  borderBottomLeftRadius: "15 px",
+                }}
+              >
+                <PlanHistory />
               </Card>
             </Col>
-          </Row>
+          </div>
           <Divider />
-          <Row>
-            <Col span={8} className="cardCol">
-              <Card className="cardHero" title={"Fixed Deposit Note"}>
-                <Row>
-                  <Col span={"16"}>
-                    <p style={{ margin: "0px", color: "red" }}>
-                      Withdrawal Date
-                    </p>
-                    <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                      Oct 9, 2020
-                    </p>
-                  </Col>
-                  <Col span={"8"}>
-                    <p style={{ margin: "0px", color: "red" }}>Amount</p>
-                    <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                      ₦40,000
-                    </p>
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
-          </Row>
         </TabPane>
       </Tabs>
     </div>

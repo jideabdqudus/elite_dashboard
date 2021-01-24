@@ -19,20 +19,28 @@ import Chart from "../assets/naira_funds_blue.77b50e2.svg";
 import Drop from "../assets/plan.bffb472.svg";
 import Box from "../assets/giftbox-white.90fb8b4.svg";
 import Fire from "../assets/fire.svg";
-import  { fetch__investment } from "../store/action/authAction.js";
-import { Link,useHistory } from "react-router-dom";
-import { useDispatch,useSelector} from "react-redux";
-import  Api from "../config/api";
-
+import { view_all_products } from "../store/action/authAction.js";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Api from "../config/api";
+import { PaystackButton } from "react-paystack";
 
 const DashCard = () => {
-  const  {error,userData ,success}= useSelector(state => state?.auth)
-  const dispatch =useDispatch()
-  const  history = useHistory()
+  const config = {
+    reference: new Date().getTime(),
+    publicKey: "pk_test_362c609bb144252cb169b991e539a4458663c06b",
+  };
+
+  const { error, userData, success, products } = useSelector(
+    (state) => state?.auth
+  );
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const [form] = Form.useForm();
-        const [checkNick, setCheckNick] = useState(false);//
-        const [Myinvxt, setMyinvxt] = useState([]);//
+  const [checkNick, setCheckNick] = useState(false); //
+  const [Myinvxt, setMyinvxt] = useState([]); //
+  const [total, setTotal] = useState(0); //
   useEffect(() => {
     form.validateFields(["nickname"]);
   }, [checkNick]);
@@ -83,30 +91,55 @@ const DashCard = () => {
   const handleCancel = (e) => {
     setVisible(false);
   };
-  const fetch__inv= ()=>{
-    Api().get("/investment/fetch__investment")
-    .then(auth=>{
-      console.log(auth.data.data)
-      if(auth.data.data){
-        setMyinvxt(auth.data.data)
-        let total=0
-        auth.data.data.map((each)=>{
-          total=+each.product_price
-        })
-console.log(total)
+  const fetch__inv = () => {
+    Api()
+      .get("/investment/fetch__investment")
+      .then((auth) => {
+        console.log(auth.data.data);
+        if (auth.data.data) {
+          setMyinvxt(auth.data.data);
+          let total = 0;
+          auth.data.data.map((each) => {
+            total += +each.product_price;
 
-      }
-    })
-    .catch(e=>{
-    })
-  
-  }
+          });
+          setTotal(total)
+        }
+      })
+      .catch((e) => {});
+  };
   useEffect(() => {
-    fetch__inv()
+    fetch__inv();
+    view_all_products(dispatch,history)
     return () => {
       // cleanup
-    }
-  }, [])
+    };
+  }, []);
+
+  const handlePaystackSuccessAction = ({ reference }) => {
+    Api()
+      .get(`/paystack/callback?reference=${reference}`)
+      .then((auth) => {
+        console.log(auth.data.data);
+        // dispatch({type:USER_DATA,payload:auth.data.data})
+      })
+      .catch((e) => {
+      });
+  };
+
+  // you can call this function anything
+  const handlePaystackCloseAction = () => {
+    // implementation for  whatever you want to do when the Paystack dialog closed.
+    console.log("closed");
+  };
+
+  const componentProps = {
+    ...config,
+    text: "invest",
+    onSuccess: (reference) => handlePaystackSuccessAction(reference),
+    onClose: handlePaystackCloseAction,
+  };
+
   return (
     <div>
       <Fragment>
@@ -136,7 +169,7 @@ console.log(total)
           </div>
           <Row gutter={[24, 24]}>
             <Col span={8} className="cardCol">
-              <Card className="cardHeros">
+              <Card className="equitiesCard">
                 <p
                   style={{
                     fontSize: "19px",
@@ -163,24 +196,15 @@ console.log(total)
                   }}
                 >
                   <a style={{ color: "#0e397c" }} href="#!">
-                    ₦0.00
+                    ₦{total}
                   </a>
                 </p>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  className="myBtn"
-                  block
-                  style={{ cursor: "text" }}
-                >
-                  Cash Balance: ₦0.00
-                </Button>
               </Card>
             </Col>
           </Row>
         </div>
       </Fragment>
-      <div>
+      {/* <div>
         <p
           style={{
             margin: "0 0 30px 0",
@@ -196,7 +220,7 @@ console.log(total)
           <Link to="/invest">here</Link> to invest now!
         </p>
         <Divider style={{ marginBottom: "30px" }} />
-      </div>
+      </div> */}
       <div>
         <div>
           <p
@@ -207,69 +231,73 @@ console.log(total)
               fontWeight: "700",
             }}
           >
-            My Investment
+            Investments
           </p>
         </div>
         <Row gutter={[24, 24]}>
-          {Myinvxt.map(each=>(
-            
-
-            // product_name: "elite 200"
-            // product_price: "1000"
-            // remainigdate: "547"
-            // requested_amount: 1010
-            // transaction_date: "2021-01-07T08:37:15.000Z"
-
-          <Col span={8} className="cardCol">
-            <Card className="cardHero" title={each.product_name}>
-              <Row>
-                <Col span={"24"}>
-                  <p style={{ margin: "0px", color: "red" }}>Maturity Date</p>
-                  <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                    {each.MaturityDate}
-                  </p>
-                </Col>
-                <Col span={"12"}>
-                  <p style={{ margin: "0px", color: "red" }}>Rate</p>
-                  <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                    {each.intrest} %
-                  </p>
-                </Col>
-                
-                <Col span={"12"}>
-                  <p style={{ margin: "0px", color: "red" }}>Amount invested</p>
-                  <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                    {each.product_price} 
-                  </p>
-                </Col>
-                <Col span={"12"}>
-                  <p style={{ margin: "0px", color: "red" }}>Amount expected</p>
-                  <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                    {each.intrest *each.product_price} 
-                  </p>
-                </Col>
-                <Col span={"24"}>
-                  <p style={{ margin: "0px", color: "red" }}>Transaction date</p>
-                  <p style={{ fontSize: "22px", fontWeight: "700" }}>
-                    {each.transaction_date}
-                  </p>
-                </Col>
-              </Row>
-              <Button
-                type="primary"
-                htmlType="submit"
-                className="myBtn"
-                block
-                onClick={showModal}
-              >
-                {each.remainigdate} days to maturity
-              </Button>
-            </Card>
-          </Col>
+          {products.map((eachproduct) => (
+            <Col span={8} className="cardCol">
+              <Card className="cardHero">
+                <Row>
+                  <Col span={"12"}>
+                    <p style={{ margin: "0px", color: "#1890ff" }}>
+                      Product Name
+                    </p>
+                    <p style={{ fontSize: "22px", fontWeight: "700" }}>
+                      {eachproduct.product_name}
+                    </p>
+                  </Col>
+                  <Col span={"12"}>
+                    <p style={{ margin: "0px", color: "#1890ff" }}>Price</p>
+                    <p style={{ fontSize: "22px", fontWeight: "700" }}>
+                      ₦{eachproduct.price}
+                    </p>
+                  </Col>
+                  <Col span={"12"}>
+                    <p style={{ margin: "0px", color: "#1890ff" }}>Interest</p>
+                    <p style={{ fontSize: "22px", fontWeight: "700" }}>
+                      {eachproduct.intrest}%
+                    </p>
+                  </Col>
+                  <Col span={"12"}>
+                    <p style={{ margin: "0px", color: "#1890ff" }}>Naturity</p>
+                    <p style={{ fontSize: "22px", fontWeight: "700" }}>
+                      {eachproduct.MaturityDate}
+                    </p>
+                  </Col>
+                </Row>
+                {/* <Link to="/dashboard"> */}
+                <p
+                  style={{
+                    fontSize: "15px",
+                    fontWeight: "600",
+                    color: "#0e397c",
+                    marginTop: "20px",
+                    textAlign: "center",
+                  }}
+                >
+                  {/* Proceed */}
+                  <PaystackButton
+                    {...componentProps}
+                    amount={eachproduct.price * 100 * 1.01}
+                    email={userData?.email}
+                    type="primary"
+                    htmlType="submit"
+                    className="myBtn"
+                    
+                    metadata={{
+                      ...userData,
+                      product_name: eachproduct.product_name,
+                      product_price: eachproduct.price,
+                      MaturityDate: eachproduct.MaturityDate,
+                      intrest: eachproduct.intrest,
+                    }}
+                  />
+                </p>
+                {/* </Link> */}
+              </Card>
+            </Col>
           ))}
-
-        
-         
         </Row>
       </div>
       <div style={{ margin: "100px" }}>

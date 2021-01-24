@@ -1,0 +1,81 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\adbul-qudus.olajide\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
+
+PATH: 
+  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\nodejs\;C:\Users\adbul-qudus.olajide\AppData\Local\Microsoft\WindowsApps;C:\Users\adbul-qudus.olajide\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\adbul-qudus.olajide\AppData\Roaming\npm;C:\Users\adbul-qudus.olajide\AppData\Local\Programs\Git\cmd
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  14.15.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, copyfile 'C:\Users\adbul-qudus.olajide\AppData\Local\Yarn\Cache\v6\npm-@bcoe-v8-coverage-0.2.3-75a2e8b51cb758a7553d6804a5932d7aace75c39-integrity\node_modules\@bcoe\v8-coverage\LICENSE.txt' -> 'C:\Users\adbul-qudus.olajide\Desktop\ABDQUDUS\Programming\Projects\elite_dashboard\node_modules\@bcoe\v8-coverage\LICENSE.txt'
+
+npm manifest: 
+  {
+    "name": "elite_dashboard",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+      "@testing-library/jest-dom": "^5.11.4",
+      "@testing-library/react": "^11.1.0",
+      "@testing-library/user-event": "^12.1.10",
+      "antd": "^4.9.1",
+      "bootstrap": "^4.5.3",
+      "classnames": "^2.2.6",
+      "font-awesome": "^4.7.0",
+      "graphql": "^15.4.0",
+      "graphql-tag": "^2.11.0",
+      "node-sass": "^5.0.0",
+      "prop-types": "^15.7.2",
+      "react": "^17.0.1",
+      "react-animate-on-scroll": "^2.1.5",
+      "react-dom": "^17.0.1",
+      "react-redux": "^7.2.2",
+      "react-router-dom": "^5.2.0",
+      "react-scripts": "4.0.1",
+      "react-text-transition": "^1.1.2",
+      "reactstrap": "^8.7.1",
+      "redux": "^4.0.5",
+      "redux-logger": "^3.0.6",
+      "redux-thunk": "^2.3.0",
+      "sal.js": "^0.8.1",
+      "styled-components": "^5.2.1",
+      "web-vitals": "^0.2.4"
+    },
+    "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test",
+      "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+      "extends": [
+        "react-app",
+        "react-app/jest"
+      ]
+    },
+    "browserslist": {
+      "production": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+      ],
+      "development": [
+        "last 1 chrome version",
+        "last 1 firefox version",
+        "last 1 safari version"
+      ]
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
