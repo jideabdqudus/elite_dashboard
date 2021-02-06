@@ -21,9 +21,11 @@ class Validator{
     }
     async loginValidator(data){
     if(!data.password) throw new customError("provide your password ",400)
+    if(!data.email) throw new customError("provide your email ",400)
     }
     async userExist(User,email){
         let userExist = await User.findOne({email:email})
+        console.log('object')
         if(!userExist)  return {user:null,status:false}
         return {user:userExist,status:true}
     }

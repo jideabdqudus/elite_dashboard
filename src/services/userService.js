@@ -32,6 +32,9 @@ class userService {
 
     async login(req,res){
         let data =req.body
+        // console.log('a')
+        if(!data.email) throw new customError('provide an email')
+
         await loginValidator(data)
         let UserExist =await userExist(User,data.email)
         if(!UserExist.status) throw new customError('no user found')
@@ -58,6 +61,7 @@ class userService {
         throw new customError('no user found')   
         if(UserExist.user.isEmailVerified)
         throw new customError('account has previously been verified')
+console.log(UserExist.user.otp,data.Otp) 
         if(UserExist.user.otp!==data.Otp) 
         throw new customError('please input the otp you recieved')   
         if(Date.now()>UserExist.user.otpExp)
